@@ -24,13 +24,13 @@ readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 );
 
 app.post('/api/notes', (req, res) => {
-    const { noteTitle, NoteContent } = req.body;
     const newNote = {
-        title: `${noteTitle}`,
-        text: `${NoteContent}`,
+        title: req.body.title,
+        text: req.body.text,
         id: uniqid()
     };
     readAndAppend(newNote, './db/db.json');
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 })
 
 const writeToFile = (destination, content) =>
