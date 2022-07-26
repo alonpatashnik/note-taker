@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const PORT = 8080;
+const PORT = process.env.PORT || 80;
 const app = express();
 const uniqid = require('uniqid')
 const fs = require('fs')
